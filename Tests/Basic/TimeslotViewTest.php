@@ -50,6 +50,22 @@ class TimeslotViewTest extends \PHPUnit_Framework_TestCase
 
 
     /**
+     * @throws \Exception
+     */
+    public function testWrongTimeslotDataException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        new \MusicAct(
+            new \Artist('Bruno Mars'),
+            '',
+            new \DateTime('2019-01-01 00:00:00'),
+            new \DateTime('2019-01-01 00:59:00')
+        );
+    }
+
+
+    /**
      * @return array
      * @throws \Exception
      */
