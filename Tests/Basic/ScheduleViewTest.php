@@ -45,6 +45,7 @@ class ScheduleViewTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @return array
+     * @throws \Exception
      */
     public function getTimeslotsForCountingTest()
     {
@@ -72,6 +73,7 @@ class ScheduleViewTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @return array
+     * @throws \Exception
      */
     public function getTimeslotsForDurationTest()
     {

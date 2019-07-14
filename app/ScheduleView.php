@@ -22,10 +22,7 @@ class ScheduleView {
      */
     public function getNumberOfTimeslots()
     {
-        /**
-         * @TODO: Implementation
-         */
-        return 0;
+        return $this->schedule->count();
     }
 
     /**
@@ -33,9 +30,11 @@ class ScheduleView {
      */
     public function getDurationInMinutes()
     {
-        /**
-         * @TODO: Implementation. Include breaks between timeslots in overall schedule duration.
-         */
-        return 0;
+        if (!$this->schedule->count()) {
+            return 0;
+        }
+        $start = $this->schedule->first()->getStartsAt()->getTimestamp();
+        $end = $this->schedule->last()->getEndsAt()->getTimestamp();
+        return ($end - $start) / 60;
     }
 }

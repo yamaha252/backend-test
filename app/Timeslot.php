@@ -79,8 +79,9 @@ abstract class Timeslot
      */
     public function overlaps(Timeslot $timeslot)
     {
-        /**
-         * @TODO: Implementation
-         */
+        return
+            ($this->getStartsAt() >= $timeslot->getStartsAt() && $this->getEndsAt() <= $timeslot->getEndsAt()) ||
+            ($this->getStartsAt() >= $timeslot->getStartsAt() && $this->getStartsAt() <= $timeslot->getEndsAt()) ||
+            ($this->getStartsAt() <= $timeslot->getStartsAt() && $this->getEndsAt() >= $timeslot->getStartsAt());
     }
 }

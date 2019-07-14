@@ -19,10 +19,9 @@ class TimeslotView {
      */
     public function getDurationInMinutes()
     {
-        /**
-         * @TODO: Implementation
-         */
-        return 0;
+        $start = $this->timeslot->getStartsAt()->getTimestamp();
+        $end = $this->timeslot->getEndsAt()->getTimestamp();
+        return ($end - $start) / 60;
     }
 
     /**
@@ -31,9 +30,6 @@ class TimeslotView {
      */
     public function getDescriptionExcerpt(int $length = 10)
     {
-        /**
-         * @TODO: Implementation
-         */
-        return '';
+        return substr($this->timeslot->getDescription(), 0, $length);
     }
 }

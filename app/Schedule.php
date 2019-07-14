@@ -5,9 +5,14 @@
  */
 class Schedule implements Iterator, Countable {
     /**
-     * @var array
+     * @var Timeslot[]
      */
     private $timeslots;
+
+    /**
+     * @var int
+     */
+    private $iteratorPosition = 0;
 
     /**
      *
@@ -35,10 +40,12 @@ class Schedule implements Iterator, Countable {
      */
     private function sortByStartTime()
     {
-        usort($this->timeslots, function () {
-            /**
-             * @TODO: Implementation
-             */
+        /**
+         * @var Timeslot $a
+         * @var Timeslot $b
+         */
+        usort($this->timeslots, function ($a, $b) {
+            return $a->getStartsAt() < $b->getStartsAt() ? -1 : 1;
         });
     }
 
@@ -62,9 +69,7 @@ class Schedule implements Iterator, Countable {
      */
     public function count()
     {
-        /**
-         * @TODO: Implementation
-         */
+        return count($this->timeslots);
     }
 
     /**
@@ -72,9 +77,7 @@ class Schedule implements Iterator, Countable {
      */
     function rewind()
     {
-        /**
-         * @TODO: Implementation
-         */
+        $this->iteratorPosition = 0;
     }
 
     /**
@@ -82,19 +85,15 @@ class Schedule implements Iterator, Countable {
      */
     function current()
     {
-        /**
-         * @TODO: Implementation
-         */
+        return $this->timeslots[$this->iteratorPosition];
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     function key()
     {
-        /**
-         * @TODO: Implementation
-         */
+        return $this->iteratorPosition;
     }
 
     /**
@@ -102,17 +101,27 @@ class Schedule implements Iterator, Countable {
      */
     function next()
     {
-        /**
-         * @TODO: Implementation
-         */
+        $this->iteratorPosition++;
     }
 
     /**
      * @return bool
      */
     function valid() {
-        /**
-         * @TODO: Implementation
-         */
+        return !!$this->timeslots[$this->iteratorPosition];
+    }
+
+    /**
+     * @return Timeslot
+     */
+    function first() {
+        return $this->timeslots[0];
+    }
+
+    /**
+     * @return Timeslot
+     */
+    function last() {
+        return $this->timeslots[$this->count() - 1];
     }
 }

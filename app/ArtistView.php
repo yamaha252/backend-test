@@ -25,7 +25,7 @@ class ArtistView {
         /**
          * @TODO: Implementation
          */
-        return '';
+        return $this->artist->getName()[0];
     }
 
     /**
@@ -36,6 +36,6 @@ class ArtistView {
         /**
          * @TODO: Implementation
          */
-        return '';
+        return strtolower($this->artist->getName());
     }
 }

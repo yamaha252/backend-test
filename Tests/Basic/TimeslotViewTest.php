@@ -33,6 +33,7 @@ class TimeslotViewTest extends \PHPUnit_Framework_TestCase
      * @param string $description
      * @param int $length
      * @param string $expectedExcerpt
+     * @throws \Exception
      */
     public function testDescriptionExcerpts(string $description, int $length, string $expectedExcerpt)
     {
@@ -50,6 +51,7 @@ class TimeslotViewTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @return array
+     * @throws \Exception
      */
     public function getTimeslotDates()
     {
