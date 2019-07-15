@@ -34,17 +34,8 @@ abstract class Timeslot
      */
     public function __construct(Artist $artist, string $description, DateTime $startsAt, DateTime $endsAt)
     {
-        if (!TimeslotValidator::validate($artist)) {
-            throw new InvalidArgumentException('Artist is invalid');
-        }
-        if (!TimeslotValidator::validate($description)) {
+        if (!AttributeValidator::isNotEmpty($description)) {
             throw new InvalidArgumentException('Description is invalid');
-        }
-        if (!TimeslotValidator::validate($startsAt)) {
-            throw new InvalidArgumentException('Start date is invalid');
-        }
-        if (!TimeslotValidator::validate($endsAt)) {
-            throw new InvalidArgumentException('End date is invalid');
         }
 
         $this->artist = $artist;

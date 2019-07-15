@@ -24,6 +24,16 @@ class ArtistViewTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @throws \Exception
+     */
+    public function testWrongNameException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        new \Artist("");
+    }
+
+    /**
      * @return array
      */
     public function getArtistData()

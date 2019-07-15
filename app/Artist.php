@@ -3,7 +3,8 @@
 /**
  * Class Artist
  */
-class Artist {
+class Artist
+{
     /**
      * @var string
      */
@@ -15,6 +16,10 @@ class Artist {
      */
     public function __construct(string $name)
     {
+        if (!AttributeValidator::isNotEmpty($name)) {
+            throw new InvalidArgumentException('Name is invalid');
+        }
+
         $this->name = $name;
     }
 

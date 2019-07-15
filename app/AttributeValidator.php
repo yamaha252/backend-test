@@ -1,10 +1,10 @@
 <?php
-class TimeslotValidator {
+class AttributeValidator {
     /**
      * @param mixed $data
      * @return bool
      */
-    public static function validate($data) {
+    public static function isNotEmpty($data) {
         return !!$data;
     }
 }
